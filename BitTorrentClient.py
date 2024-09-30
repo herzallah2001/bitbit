@@ -40,7 +40,7 @@ class BitTorrentClient :
 
 
 servers = [
-    "https://tracker.example.com/announce", 
+    "https://127.0.0.1/announce", 
     "https://backup-tracker.example.com/announce"
 ]
 
