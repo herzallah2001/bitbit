@@ -10,13 +10,13 @@ class DBManager:
         return sqlite3.connect(self.db_path)
 
     # Inserts a new peer into the peers table
-    def add_peer(self, torrent_id, peer_id, ip, port, uploaded, downloaded, left, user_agent):
+    def add_peer(self, torrent_id, peer_id, ip, port, uploaded, downloaded, left):
         conn = self.connect()
         cursor = conn.cursor()
         cursor.execute("""
-            INSERT INTO peers (torrent_id, peer_id, ip, port, uploaded, downloaded, left, is_seed, last_announce, user_agent)
+            INSERT INTO peers (torrent_id, peer_id, ip, port, uploaded, downloaded, left, is_seed, last_announce)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        """, (torrent_id, peer_id, ip, port, uploaded, downloaded, left, int(left == 0), int(time.time()), user_agent))
+        """, (torrent_id, peer_id, ip, port, uploaded, downloaded, left, int(left == 0), int(time.time())))
         conn.commit()
         peer_id_db = cursor.lastrowid
         conn.close()

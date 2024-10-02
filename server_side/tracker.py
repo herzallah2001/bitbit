@@ -23,7 +23,6 @@ class TrackerRequestHandler(BaseHTTPRequestHandler):
         downloaded = query_components.get('downloaded', [0])[0]
         left = query_components.get('left', [0])[0]
         event = query_components.get('event', [None])[0]
-        user_agent = query_components.get('user_agent', ["Unknown"])[0]
 
         if None in [info_hash, peer_id, port]:  # Validate required parameters
             self.send_response(400)
@@ -54,7 +53,7 @@ class TrackerRequestHandler(BaseHTTPRequestHandler):
         peer = db_manager.find_peer(torrent_id, peer_id)#6
 
         if not peer:
-            peer_id_db = db_manager.add_peer(torrent_id, peer_id, ip, port, uploaded, downloaded, left, user_agent)
+            peer_id_db = db_manager.add_peer(torrent_id, peer_id, ip, port, uploaded, downloaded, left)
         else:
             peer_id_db = peer[0]
         
