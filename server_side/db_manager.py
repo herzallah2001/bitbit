@@ -2,7 +2,7 @@ import sqlite3
 import time
 
 class DBManager:
-    def __init__(self, db_path='db/tracker_db'):
+    def __init__(self, db_path='./server_side/db/tracker_db'):
         self.db_path = db_path
 
     # Establishes a connection to the SQLite database
