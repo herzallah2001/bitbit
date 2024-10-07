@@ -41,7 +41,7 @@ def create_torrent(file_path, tracker_url, tracker_list=None, piece_length=26214
     print(f"Torrent file '{torrent_file_name}' created successfully!")
 
 # Usage
-file_to_serve = './res/image.jpg'
+file_to_serve = './client_side/res/image.jpg'
 tracker_url = 'http://127.0.0.1'
 tracker_list = [
     ['127.0.0.1'],

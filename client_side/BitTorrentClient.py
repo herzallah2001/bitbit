@@ -10,7 +10,7 @@ class BitTorrentClient:
         self.torrent_data = self.load_torrent(torrent_file)
         
         # Extraire l'URL du serveur tracker depuis le fichier .torrent
-        self.server_url = f"http://{self.torrent_data.get(b'announce').decode('utf-8')}:8080"
+        self.server_url = f"{self.torrent_data.get(b'announce').decode('utf-8')}:8080"
         
         # Extraire les hash des pièces depuis la section info
         self.hash_pieces = self.extract_hash_pieces()
@@ -47,7 +47,6 @@ class BitTorrentClient:
         }
 
         # Construct the request correctly
-        self.server_url = "http://127.0.0.1:8080"
     
         req = requests.Request('GET', self.server_url, params=params)
         prepared_req = req.prepare()  # Préparer la requête
@@ -67,7 +66,7 @@ class BitTorrentClient:
 
 
 # Chemin vers le fichier .torrent
-torrent_file = './client_side/image.jpg.torrent'
+torrent_file = 'image.jpg.torrent'
 
 # Créer un client BitTorrent
 client = BitTorrentClient(torrent_file)
