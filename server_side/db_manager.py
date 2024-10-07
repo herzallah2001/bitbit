@@ -15,8 +15,9 @@ class DBManager:
         cursor = conn.cursor()
         cursor.execute("""
             INSERT INTO peers (torrent_id, peer_id, ip, port, uploaded, downloaded, left, is_seed, last_announce)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        """, (torrent_id, peer_id, ip, port, uploaded, downloaded, left, int(left == 0), int(time.time())))
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """, (torrent_id, peer_id, ip, port, uploaded, downloaded, left, int(left == 0), int(time.time())))  # No change needed here
+
         conn.commit()
         peer_id_db = cursor.lastrowid
         conn.close()
